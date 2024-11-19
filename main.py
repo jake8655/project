@@ -1,14 +1,14 @@
 import random
 
 
-def intInput():
-    a = input("number: ")
+def intInput(text: str = "number: "):
+    a = input(text)
     num = None
     while num == None:
         try:
             num = int(a)
         except:
-            a = input("number: ")
+            a = input(text)
     return num
 
 
@@ -36,7 +36,7 @@ def remove_first(arr: list[int]):
 
 
 def add_first(arr: list[int]):
-    # loop from end to start
+    # loop from end to start (exclusive)
     for i in range(len(arr) - 1, 0, -1):
         # at the end append element to the list and set the previous last element to the one before it
         if i == len(arr) - 1:
@@ -50,6 +50,18 @@ def add_first(arr: list[int]):
     arr[0] = new
 
 
+def remove_anywhere(arr: list[int]):
+    idx = intInput("index: ")
+    # make sure idx is valid according to the list
+    while idx < 0 or idx > len(arr) - 1:
+        idx = intInput()
+
+    # Loop from index (inclusive) to penultimate element
+    for i in range(idx, len(arr) - 1):
+        arr[i] = arr[i + 1]
+    arr.pop()
+
+
 arr = [random.randint(1, 100) for _ in range(10)]
 
 
@@ -60,7 +72,8 @@ n = new
 p = print
 o = remove last
 z = remove first
-a = add first"""
+a = add first
+r = remove anywhere"""
 )
 
 command: str = ""
@@ -78,8 +91,10 @@ while command != "x":
         remove_first(arr)
     if command == "a":
         add_first(arr)
+    if command == "r":
+        remove_anywhere(arr)
 
 # Add to the beginning ✅
 # Remove from the beginning ✅
 # Add anywhere
-# Remove from anywhere
+# Remove from anywhere ✅
