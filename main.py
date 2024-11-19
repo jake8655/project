@@ -35,6 +35,21 @@ def remove_first(arr: list[int]):
     arr.pop()
 
 
+def add_first(arr: list[int]):
+    # loop from end to start
+    for i in range(len(arr) - 1, 0, -1):
+        # at the end append element to the list and set the previous last element to the one before it
+        if i == len(arr) - 1:
+            curr = arr[i]
+            arr[i] = arr[i - 1]
+            arr.append(curr)
+            continue
+        arr[i] = arr[i - 1]
+
+    new = intInput()
+    arr[0] = new
+
+
 arr = [random.randint(1, 100) for _ in range(10)]
 
 
@@ -44,7 +59,8 @@ x = exit
 n = new
 p = print
 o = remove last
-z = remove first"""
+z = remove first
+a = add first"""
 )
 
 command: str = ""
@@ -60,8 +76,10 @@ while command != "x":
         remove_last(arr)
     if command == "z":
         remove_first(arr)
+    if command == "a":
+        add_first(arr)
 
-# Add to the beginning
-# Remove from the beginning
+# Add to the beginning ✅
+# Remove from the beginning ✅
 # Add anywhere
 # Remove from anywhere
