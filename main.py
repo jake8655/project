@@ -36,7 +36,7 @@ def remove_first(arr: list[int]):
 
 
 def add_first(arr: list[int]):
-    # loop from end to start (exclusive)
+    # loop backwards from end to start (exclusive)
     for i in range(len(arr) - 1, 0, -1):
         # at the end append element to the list and set the previous last element to the one before it
         if i == len(arr) - 1:
@@ -62,6 +62,21 @@ def remove_anywhere(arr: list[int]):
     arr.pop()
 
 
+def add_anywhere(arr: list[int]):
+    idx = intInput("index: ")
+    # make sure idx is valid according to the list
+    while idx < 0 or idx > len(arr) - 1:
+        idx = intInput()
+    new_val = intInput()
+
+    # duplicate last element
+    arr.append(arr[-1])
+    # loop backwards from penultimate to idx (exlusive)
+    for i in range(len(arr) - 2, idx, -1):
+        arr[i] = arr[i - 1]
+    arr[idx] = new_val
+
+
 arr = [random.randint(1, 100) for _ in range(10)]
 
 
@@ -73,7 +88,8 @@ p = print
 o = remove last
 z = remove first
 a = add first
-r = remove anywhere"""
+r = remove anywhere
+h = add anywhere"""
 )
 
 command: str = ""
@@ -93,8 +109,10 @@ while command != "x":
         add_first(arr)
     if command == "r":
         remove_anywhere(arr)
+    if command == "h":
+        add_anywhere(arr)
 
 # Add to the beginning ✅
 # Remove from the beginning ✅
-# Add anywhere
+# Add anywhere ✅
 # Remove from anywhere ✅
