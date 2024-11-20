@@ -36,14 +36,10 @@ def remove_first(arr: list[int]):
 
 
 def add_first(arr: list[int]):
-    # loop backwards from end to start (exclusive)
-    for i in range(len(arr) - 1, 0, -1):
-        # at the end append element to the list and set the previous last element to the one before it
-        if i == len(arr) - 1:
-            curr = arr[i]
-            arr[i] = arr[i - 1]
-            arr.append(curr)
-            continue
+    # duplicate last element
+    arr.append(arr[-1])
+    # loop backwards from penultimate element to start (exclusive)
+    for i in range(len(arr) - 2, 0, -1):
         arr[i] = arr[i - 1]
 
     new = intInput()
