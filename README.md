@@ -164,9 +164,9 @@ adresa = adresa_prveho_prvku + i * velkost_datoveho_typu_prvkov_v_pamati
   - vseobecny opis datovych struktur
 - [Encore](https://encore.dev/blog/queueing)
   - blog na queueing
-- [Samwho](https://samwho.dev/load-balancing)
+- [Sam Rose](https://samwho.dev/load-balancing)
   - blog na load balancing
-- [Theo](https://youtube.com/@t3dotgg)
+- [Theo Browne](https://youtube.com/@t3dotgg)
   - na youtube
 - [Excalidraw](https://excalidraw.com)
   - na kresby
