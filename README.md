@@ -133,7 +133,7 @@ Citanie prvku na zaciatku a na konci sa tiez vie dosiahnut konstantnou casovou z
 
 Nevyhoda fronty je, ze pridanie/zmazanie prvku z lubovolnej pozicie je casovo narocna a taktiez precitanie lubovolneho prvku fronty by malo casovu zlozitost linearnu, `O(n)`.
 
-Prakticky sa fronty pouzivaju na planovanie prac napriklad v tlaciarni alebo na planovanie postupnosti spracovanie ziadosti poslane web serveru.
+Prakticky sa fronty pouzivaju na planovanie prac napriklad v tlaciarni alebo na planovanie postupnosti spracovania ziadosti poslane web serveru.
 Taktiez su fronty velmi uzitocne ked mame 1 sluzbu, ktora sa sucasne vyuziva viacerymi spotrebitelmi.
 
 ### Pole
@@ -164,6 +164,8 @@ adresa = adresa_prveho_prvku + i * velkost_datoveho_typu_prvkov_v_pamati
   - vseobecny opis datovych struktur
 - [Encore](https://encore.dev/blog/queueing)
   - blog na queueing
+- [Samwho](https://samwho.dev/load-balancing)
+  - blog na load balancing
 - [Theo](https://youtube.com/@t3dotgg)
   - na youtube
 - [Excalidraw](https://excalidraw.com)
