@@ -6,11 +6,11 @@ Naprogramoval som par zakladnych pomocnych funkcii potrebnych pri praci so zozna
 1. [Odstranenie posledneho prvku zoznamu](#odstranenie-posledneho-prvku-zoznamu)
 1. [Odstranenie prveho prvku zoznamu](#odstranenie-prveho-prvku-zoznamu)
 1. [Pridanie prvku na zaciatok zoznamu](#pridanie-prvku-na-zaciatok-zoznamu)
-1. [Odstranenie prvku na lubovolnom indexe zoznamu]()
-1. Pridanie prvku na lubovolny index zoznamu
 1. Stack (LIFO semantika)
 1. Queue (FIFO semantika)
 1. Zoznam (Mudry datovy typ)
+1. [Odstranenie prvku na lubovolnom indexe zoznamu](#odstranenie-prvku-na-lubovolnom-indexe-zoznamu)
+1. [Pridanie prvku na lubovolny index zoznamu](#pridanie-prvku-na-lubovolny-index-zoznamu)
 
 ### Pridanie prvku na koniec zoznamu
 Na tuto operaciu som vyuzil vstavanu metodu `.append(val)`.
@@ -59,3 +59,43 @@ zoznam[0] = nova_hodnota
 ```
 
 ### Odstranenie prvku na lubovolnom indexe zoznamu
+Najprv sa musime uistit, ze index, na ktory chce uzivatel umiestnit novy prvok existuje v nasom zozname:
+```py
+if idx < 0 or idx > len(zoznam) - 1:
+    print("nespravny index")
+    return
+```
+Ked uz vieme, ze index je spravny, tak si posunieme prvky v zozname od indexu (vratane) po predposledny prvok o 1 poziciu dolava:
+```py
+# Cyklus zacina pri zvolenom indexe a konci pri predposlednom prvku
+for i in range(idx, len(zoznam) - 1):
+    zoznam[i] = zoznam[i + 1]
+```
+Zoznam `[2, 4, 6]` pri vybratom indexe `1` sa nam zmeni na: `[2, 6, 6]`. Potom mozeme jednoducho odstranit posledny prvok:
+```py
+zoznam.pop()
+```
+
+### Pridanie prvku na lubovolny index zoznamu
+Uistime sa, ze index existuje podobne ako pri predoslej operacii:
+```py
+if idx < 0 or idx > len(zoznam) - 1:
+    print("nespravny index")
+    return
+```
+Nasledne zduplikujeme posledny prvok zoznamu:
+```
+zoznam.append(zoznam[-1])
+```
+Zoznam `[2, 4, 6]` sa nam zmeni na `[2, 4, 6, 6]`.
+Teraz si posunieme prvky zoznamu od predposledneho (vratane) po zvoleny index o 1 doprava. Cyklus postupuje od vacsich indexov po mensie (opacne ako normalne):
+```py
+# Cyklus zacina pri predposlednom indexe a konci pri zvolenom indexe
+# Cyklus postupuje od vacsich indexov po mensie
+for i in range(len(zoznam) - 2, idx, -1):
+    zoznam[i] = zoznam[i - 1]
+```
+Takto sa nam zoznam `[2, 4, 6, 6]` pri zvolenom indexe `1` zmeni na: `[2, 4, 4, 6]`. Nasledne mozeme jednoducho nastavit hodnotu prvku na zvolenom indexe na lubovolnu hodnotu, kedze tuto hodnotu mame momentalne duplikovanu:
+```py
+zoznam[idx] = nova_hodnota
+```
