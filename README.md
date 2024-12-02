@@ -9,7 +9,7 @@ Naprogramoval som par zakladnych pomocnych funkcii potrebnych pri praci so zozna
 1. [Odstranenie prvku na lubovolnom indexe zoznamu](#odstranenie-prvku-na-lubovolnom-indexe-zoznamu)
 1. [Pridanie prvku na lubovolny index zoznamu](#pridanie-prvku-na-lubovolny-index-zoznamu)
 1. [Stack (LIFO princip)](#stack-(lifo-princip))
-1. Queue (FIFO princip)
+1. [Queue (FIFO princip)](#queue-(fifo-princip))
 1. Zoznam (Linearna datova struktura)
 
 ### Pridanie prvku na koniec zoznamu
@@ -107,3 +107,10 @@ Podla nazvu zistime, ze <ins>**prvok, ktory bol naposledy ulozeny do zasobnika j
 Pri pochopeni principu nam pomoze nasledujuci obrazok:
 
 ![graf zasobnika](./assets/stack.svg "Graf zasobnika")
+
+### Queue (FIFO princip)
+Datova struktura queue (fronta) funguje na principe **FIFO** (_First in First out_).
+Toto znamena, ze <ins>**prvok, ktory bol prvy vlozeny do fronty je prvy pri mazani**</ins> hodnot z fronty.
+Obrazok na pomoc s pochopenim:
+
+![graf fronty](./assets/queue.svg "Graf fronty")
