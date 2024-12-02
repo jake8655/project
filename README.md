@@ -10,7 +10,8 @@ Naprogramoval som par zakladnych pomocnych funkcii potrebnych pri praci so zozna
 1. [Pridanie prvku na lubovolny index zoznamu](#pridanie-prvku-na-lubovolny-index-zoznamu)
 1. [Stack (LIFO princip)](#stack-(lifo-princip))
 1. [Queue (FIFO princip)](#queue-(fifo-princip))
-1. Zoznam (Linearna datova struktura)
+1. [Pole](#pole)
+1. [Zdroje](#zdroje)
 
 ### Pridanie prvku na koniec zoznamu
 Na tuto operaciu som vyuzil vstavanu metodu `.append(val)`.
@@ -108,9 +109,62 @@ Pri pochopeni principu nam pomoze nasledujuci obrazok:
 
 ![graf zasobnika](./assets/stack.svg "Graf zasobnika")
 
+Zasobniky maju vo vseobecnosti definovanu velkost (maximalny pocet prvkov) pri ich vytvoreni a ked pridame hodnotu do plneho zasobnika vznikne nam takzvany _Stack Overflow_ error.
+
+Vyhoda zasobnikov je, ze casova zlozitost pre pridanie aj mazanie prvkov je konstantna, `O(1)`.
+
+Nevyhoda je, ze nie je mozne precitat prvok na lubovolnej pozicii v zasobniku.
+Vieme precitat len prvok, ktory bol vlozeny do zasobnika posledny, teda je na vrchu.
+Na ulozenie adresy tohto prvku sa pouziva takzvany `stack pointer`, ktory nam umoznuje citanie prvku na vrchu konstantnou casovou zlozitostou, `O(1)`.
+
+Najznamejsie prakticke vyuzitie zasobnika je na alokaciu pamate pre pocitacove programy (Stack-based memory allocation), ci volanie funkcii v programe na zaklade  hodnoty _stack pointer_.
+Praktickejsie sa zasobniky casto pouzivaju na implementovanie redo-undo funkcii v aplikaciach alebo sa moze pouzit na forward-backward navigaciu v prehliadacoch.
+
 ### Queue (FIFO princip)
 Datova struktura queue (fronta) funguje na principe **FIFO** (_First in First out_).
-Toto znamena, ze <ins>**prvok, ktory bol prvy vlozeny do fronty je prvy pri mazani**</ins> hodnot z fronty.
+To znamena, ze <ins>**prvok, ktory bol prvy vlozeny do fronty je prvy pri mazani**</ins> hodnot z fronty.
 Obrazok na pomoc s pochopenim:
 
 ![graf fronty](./assets/queue.svg "Graf fronty")
+
+Fronty maju vo vseobecnosti tiez danu velkost pri ich vytvoreni.
+Preto operacie ako pridanie prvku, zmazanie prvku maju konstantnu casovu zlozitost, `O(1)`.
+Citanie prvku na zaciatku a na konci sa tiez vie dosiahnut konstantnou casovou zlozitostou, `O(1)` vyuzitim _front pointera_ a _rear pointera_.
+
+Nevyhoda fronty je, ze pridanie/zmazanie prvku z lubovolnej pozicie je casovo narocna a taktiez precitanie lubovolneho prvku fronty by malo casovu zlozitost linearnu, `O(n)`.
+
+Prakticky sa fronty pouzivaju na planovanie prac napriklad v tlaciarni alebo na planovanie postupnosti spracovanie ziadosti poslane web serveru.
+Taktiez su fronty velmi uzitocne ked mame 1 sluzbu, ktora sa sucasne vyuziva viacerymi spotrebitelmi.
+
+### Pole
+Jednoduche pole (array) je v klasickych programovanych jazykoch ako _C_, _Java_, alebo _Rust_, linearna datova struktura.
+To znamena, ze vsetky hodnoty ulozene v poli su reprezentovane ako jedna suvisla cast pocitacovej pamate.
+Z tohto vyplyva, ze na vytvorenie pola je potrebne vediet presny pocet prvkov, ktore do neho chceme ulozit a zaroven kazdy prvok musi byt rovnakeho datoveho typu, cize zaberat rovnaku pamat v pocitaci.
+
+Obrazok:
+![graf pola](./assets/array.svg "Graf pola")
+Vsimnite si, ze "pridat" prvok mozeme na lubovolnu poziciu v lubovolnom poradi a takisto to plati aj pri mazani prvku.
+
+V sucasnosti je toto obmedzenie neprakticke, a preto sa vyvinuli urcite metody na "zvacsenie" kapacity pola a takzvane vektory.
+
+Pri tychto vektoroch je v najhorsom pripade casova zlozitost pridania prvku linearna, `O(n)`, kedze moze nastat situacia, ze nas vektor je plny.
+V tomto pripade musime vymedzit nove miesto v pamati pre novy vektor (zvacsa s dvojitou kapacitou predosleho vektora), do ktoreho nasledne skopirujeme vsetky prvky predosleho vektora.
+Nakoniec mozeme pridat aj novu hodnotu do vektore, kedze uz je pre nu miesto.
+
+Vyhodu pola (taktiez vektora) si mozeme vsimnut pri citani hodnot.
+Tato operacia ma casovu zlozitost konstantnu, `O(1)`.
+Prave ta vlastnost poli nam umoznuje tuto vyhodu, ze polia su ulozene v **suvislej** casti pamate.
+Z toho nam vyplyva, ze vzorec na zistenie pamatovej adresy lubovolneho prvku zoznamu, kde i je index prvku, je nasledovny:
+```
+adresa = adresa_prveho_prvku + i * velkost_datoveho_typu_prvkov_v_pamati
+```
+
+### Zdroje
+- [GeeksforGeeks](https://geeksforgeeks.org)
+  - vseobecny opis datovych struktur
+- [Encore](https://encore.dev/blog/queueing)
+  - blog na queueing
+- [Theo](https://youtube.com/@t3dotgg)
+  - na youtube
+- [Excalidraw](https://excalidraw.com)
+  - na kresby
