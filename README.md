@@ -6,11 +6,11 @@ Naprogramoval som par zakladnych pomocnych funkcii potrebnych pri praci so zozna
 1. [Odstranenie posledneho prvku zoznamu](#odstranenie-posledneho-prvku-zoznamu)
 1. [Odstranenie prveho prvku zoznamu](#odstranenie-prveho-prvku-zoznamu)
 1. [Pridanie prvku na zaciatok zoznamu](#pridanie-prvku-na-zaciatok-zoznamu)
-1. Stack (LIFO semantika)
-1. Queue (FIFO semantika)
-1. Zoznam (Mudry datovy typ)
 1. [Odstranenie prvku na lubovolnom indexe zoznamu](#odstranenie-prvku-na-lubovolnom-indexe-zoznamu)
 1. [Pridanie prvku na lubovolny index zoznamu](#pridanie-prvku-na-lubovolny-index-zoznamu)
+1. [Stack (LIFO princip)](#stack-(lifo-princip))
+1. Queue (FIFO princip)
+1. Zoznam (Linearna datova struktura)
 
 ### Pridanie prvku na koniec zoznamu
 Na tuto operaciu som vyuzil vstavanu metodu `.append(val)`.
@@ -99,3 +99,11 @@ Takto sa nam zoznam `[2, 4, 6, 6]` pri zvolenom indexe `1` zmeni na: `[2, 4, 4, 
 ```py
 zoznam[idx] = nova_hodnota
 ```
+
+### Stack (LIFO princip)
+Datova struktura stack (zasobnik) funguje na takzvanom principe **LIFO** (_Last in First out_).
+Tento princip vyjadruje postupnost vkladanie a mazania udajov v strukture.
+Podla nazvu zistime, ze <ins>**prvok, ktory bol naposledy ulozeny do zasobnika je prvy pri mazani**</ins> udajov zo zasobnika.
+Pri pochopeni principu nam pomoze nasledujuci obrazok:
+
+![graf zasobnika](./assets/stack.svg "Graf zasobnika")
